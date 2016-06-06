@@ -1,5 +1,9 @@
 #include "MdSpi.h"
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+
 
 using namespace std;
 
@@ -11,7 +15,6 @@ extern TThostFtdcInvestorIDType INVESTOR_ID;
 extern TThostFtdcPasswordType PASSWORD;
 extern char* ppInstrumentID[];
 extern int iInstrumentID;
-
 extern int iRequestID;
 
 void MdSpi::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
@@ -84,6 +87,17 @@ void MdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketDat
 {
 	//cerr << __FUNCTION__ << endl;
 	cout << pDepthMarketData->InstrumentID << '\t' << pDepthMarketData->AskPrice1 << '\t' << pDepthMarketData->BidPrice1 << endl;
+	//ifstream fin("d:\data\data.text");
+	stringstream ss1,ss2,ss3,ss4,ss5;
+	ss1 << pDepthMarketData->InstrumentID;
+	ss2 << pDepthMarketData->TradingDay;
+	ss3 << pDepthMarketData->UpdateTime;
+	ss4 << pDepthMarketData->AskPrice1;
+	ss5 << pDepthMarketData->BidPrice1;
+	ofstream fin("d:\data\\data.txt",ios::out|ios::app);
+
+	fin << ss1.str() << "  " << ss2.str() << "  " << ss3.str() << "  " << ss4.str() << "  " << ss5.str() <<endl;
+	fin.close();
 }
 
 bool MdSpi::IsErrorRspInfo(CThostFtdcRspInfoField *pRspInfo)

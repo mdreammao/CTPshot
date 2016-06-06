@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include <iostream>
-
+#include <fstream>
 #include "ThostFtdcMdApi.h"
 #include "ThostFtdcTraderApi.h"
 #include "ThostFtdcUserApiDataType.h"
@@ -18,10 +18,16 @@ CThostFtdcMdApi* pUserApi;
 
 char FRONT_ADDR[] = "tcp://180.166.65.120:41213";
 TThostFtdcBrokerIDType	BROKER_ID = "8086";				// 经纪公司代码
-TThostFtdcInvestorIDType INVESTOR_ID = "00090000336";			// 投资者代码
-																//TThostFtdcPasswordType  PASSWORD = "888888";			// 用户密码
-TThostFtdcPasswordType  PASSWORD = "888888";			// 用户密码
-char *ppInstrumentID[] = { "rb1610"};			// 行情订阅列表
+TThostFtdcInvestorIDType INVESTOR_ID = "00090000001";			// 投资者代码
+//TThostFtdcInvestorIDType INVESTOR_ID = "00090000336";	
+//TThostFtdcPasswordType  PASSWORD = "888888";			// 用户密码
+
+//char FRONT_ADDR[] = "tcp://218.202.237.33:10012";
+//TThostFtdcBrokerIDType	BROKER_ID = "9999";				// 经纪公司代码
+//TThostFtdcInvestorIDType INVESTOR_ID = "060850";			// 投资者代码
+TThostFtdcPasswordType  PASSWORD = "maoheng0";			// 用户密码
+
+char *ppInstrumentID[] = { "IF1606"};			// 行情订阅列表
 int iInstrumentID = 1;									// 行情订阅数量
 
 														// 请求编号
@@ -52,5 +58,6 @@ int main()
 	cout << "登陆2" << endl;*/
 
 	system("pause");
+
 	return 0;
 }
